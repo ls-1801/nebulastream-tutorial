@@ -1,0 +1,16 @@
+
+
+
+ExecutionNode(id:1, ip:172.31.0.2, topologyId:1)
+| QuerySubPlan(queryId:1, querySubPlanId:2)
+|  SINK(3: {MQTTSinkDescriptor()})
+|    SOURCE(6,,NetworkSourceDescriptor{tcp://172.31.0.3:39727 1::6::0::0})
+|--ExecutionNode(id:2, ip:172.31.0.3, topologyId:2)
+|  | QuerySubPlan(queryId:1, querySubPlanId:1)
+|  |  SINK(8: {NetworkSinkDescriptor(partition=1::6::0::0;nodeLocation=tcp://172.31.0.2:45895)})
+|  |    FILTER(5)
+|  |      SOURCE(4,wind_turbines,LogicalSourceDescriptor(wind_turbines, wind_turbine_1))
+
+
+FILTER(5)
+  SOURCE(4,wind_turbines,LogicalSourceDescriptor(wind_turbines, wind_turbine_1))

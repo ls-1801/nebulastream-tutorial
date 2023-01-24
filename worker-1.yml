@@ -1,9 +1,9 @@
 ###
 ### General configuration
 ###
-logLevel: LOG_ERROR
-#logLevel: LOG_WARNING
-#logLevel: LOG_DEBUG
+#logLevel: LOG_ERROR
+# logLevel: LOG_WARNING
+logLevel: LOG_DEBUG
 
 ###
 ### Network configuration
@@ -15,11 +15,15 @@ coordinatorIp: coordinator
 ### Physical source configuration
 ###
 physicalSources:
-        - logicalSourceName: wind_turbines
-          physicalSourceName: wind_turbine_1
-          type: CSVSource
+        - logicalSourceName: wind_turbines_mqtt
+          physicalSourceName: wind_turbine_2
+          type: MQTTSource
           configuration:
-                  filePath: /tutorial/wind-turbine-1.csv
-                  numberOfBuffersToProduce: 1024
-                  numberOfTuplesToProducePerBuffer: 0
-                  skipHeader: true
+                topic: wind_turbines
+                cleanSession: true
+                clientId: rfRqLGZRChg8eS30PEeR
+                flushIntervalMS: -1
+                inputFormat: JSON
+                url: "ws://172.31.0.11:9001"
+                qos: 2
+                userName: rfRqLGZRChg8eS30PEeR

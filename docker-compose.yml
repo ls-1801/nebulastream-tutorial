@@ -1,7 +1,7 @@
 version: "3"
 services:
   coordinator:
-    image: nebulastream/nes-executable-image:latest
+    image: nebulastream/nes-executable-image:0.4.20
     entrypoint: ["bash", "-c", "nesCoordinator --configPath=/tutorial/coordinator.yml"]
     ports:
       - 8081:8081
@@ -10,8 +10,16 @@ services:
     networks:
       nebulastream-network:
         ipv4_address: 172.31.0.2
+  source:
+    image: nebulastream/nes-executable-image:0.4.20
+    entrypoint: ["bash", "-c", "sleep 3 && nesWorker --configPath=/tutorial/source-worker.yml"]
+    volumes:
+      - ./:/tutorial
+    networks:
+      nebulastream-network:
+        ipv4_address: 172.31.0.4      
   worker:
-    image: nebulastream/nes-executable-image:latest
+    image: nebulastream/nes-executable-image:0.4.20
     entrypoint: ["bash", "-c", "sleep 3 && nesWorker --configPath=/tutorial/worker-1.yml"]
     volumes:
       - ./:/tutorial
@@ -30,7 +38,7 @@ services:
   ui:
     image: nebulastream/nes-ui-image:latest
     ports:
-      - 3000:3000
+      - 9000:9000
     networks:
       nebulastream-network:
         ipv4_address: 172.31.0.12
