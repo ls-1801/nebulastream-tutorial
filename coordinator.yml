@@ -2,8 +2,8 @@
 ### General configuration
 ###
 # logLevel: LOG_ERROR
-# logLevel: LOG_WARNING
-logLevel: LOG_DEBUG
+logLevel: LOG_WARNING
+# logLevel: LOG_DEBUG
 optimizer:
         distributedWindowChildThreshold: 3
 
@@ -18,8 +18,15 @@ restPort: 8081
 ### Logical source configuration
 ###
 logicalSources:
-        - logicalSourceName: "wind_turbines_mqtt"
+        - logicalSourceName: "input_tuple"
           fields:
-              - name: features_geometry_coordinates_latitude
-                type: FLOAT32
-              
+              - name: a
+                type: INT32
+              - name: b
+                type: INT32
+              - name: c
+                type: INT32
+              - name: d
+                type: INT32
+              - name: e
+                type: INT32
