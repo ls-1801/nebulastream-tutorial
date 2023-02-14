@@ -1,4 +1,0 @@
-{
-  "userQuery": "Query::from(\"wind_turbines_csv\").sink(MQTTSinkDescriptor::create(\"ws://172.31.0.11:9001\", \"/wind_turbines\", \"rfRqLGZRChg8eS30PEeR\", 5, MQTTSinkDescriptor::milliseconds, 500, MQTTSinkDescriptor::atLeastOnce, false));",
-  "placement": "BottomUp"
-}
